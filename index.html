@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mozzaic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Syne:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Mozzaic</h1>
+        <p class="lede">Upload an image. Generate a field of living ceramic tiles.</p>
+      </header>
+
+      <section class="stage" aria-label="Artwork">
+        <div class="stage-frame">
+          <div
+            id="artwork"
+            class="artwork is-empty"
+            role="img"
+            aria-label="Mosaic artwork"
+          >
+            <p id="placeholder" class="placeholder">Upload an image to begin</p>
+          </div>
+          <div id="hand-layer" class="hand-layer" aria-hidden="true">
+            <div id="fingertip" class="fingertip" hidden></div>
+          </div>
+        </div>
+        <video
+          id="camera-feed"
+          class="camera-feed"
+          playsinline
+          webkit-playsinline
+          muted
+        ></video>
+      </section>
+
+      <section class="controls">
+        <div class="control-row">
+          <label class="file-label">
+            <input
+              id="image-input"
+              type="file"
+              accept="image/*"
+              aria-label="Upload image"
+            />
+            <span>Upload image</span>
+          </label>
+          <button id="generate-button" type="button" disabled>Generate</button>
+          <button id="replay-button" class="ghost" type="button" disabled>
+            Replay
+          </button>
+          <button id="reset-button" class="ghost" type="button">Reset</button>
+          <button
+            id="hands-button"
+            class="ghost"
+            type="button"
+            aria-pressed="false"
+            aria-label="Toggle hand tracking"
+          >
+            Hands
+          </button>
+        </div>
+        <p id="status" class="status" aria-live="polite">No image selected</p>
+        <p id="hand-status" class="status hand-status">Camera off</p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="hands.js"></script>
+  </body>
+</html>
